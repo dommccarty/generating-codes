@@ -21,37 +21,37 @@ function referral_code_algorithm() {
 	$fp = fopen($counter_filename, "r+");
 
 	if (flock($fp, LOCK_EX)) {  // acquire an exclusive lock
-		
-
-		$counter = (int) trim(fgets($fp));
-	
-		$modulus = 916132832; // = 62^5
-	
-		$prime = 413158523;
 
 
-	
-	
-		$next = ((++$counter) * $prime) % $modulus;
-	
-		$next = to_5_char_base_62($next);
-	
+	    $counter = (int) trim(fgets($fp));
 
-		
-		ftruncate($fp, 0);
-		
-		fwrite($fp, $counter);
-		
+	    $modulus = 916132832; // = 62^5
+
+	    $prime = 413158523;
+
+
+
+
+	    $next = ((++$counter) * $prime) % $modulus;
+
+	    $next = to_5_char_base_62($next);
+
+
+
+	    ftruncate($fp, 0);
+
+	    fwrite($fp, $counter);
+
 	    fflush($fp);            // flush output before releasing the lock
-		
+
 	    flock($fp, LOCK_UN);    // release the lock
 
-		return $next;
+	    return $next;
 
 	}
-	
+
 	else {
-		
+
 	    echo "Couldn't get the lock!";
 	}
 }
