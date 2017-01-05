@@ -20,7 +20,7 @@ function referral_code_algorithm() {
 
 	$fp = fopen($counter_filename, "r+");
 
-	if (flock($fp, LOCK_EX)) {  // acquire an exclusive lock
+	if (flock($fp, LOCK_EX)) {  // acquire an exclusive lock. note that flock blocks until it succeeds.
 
 
 	    $counter = (int) trim(fgets($fp));
