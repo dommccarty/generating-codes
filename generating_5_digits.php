@@ -14,7 +14,7 @@ store the counter somewhere.
 
 require("base_helpers.php");
 
-function referral_code_algorithm() {
+function code_algorithm() {
 
 	$counter_filename = "codes_counter.txt"; //initialize it with "0"
 
