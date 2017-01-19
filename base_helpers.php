@@ -1,7 +1,5 @@
 <?php
 
-
-
 function quotient($dividend, $divisor)
 {
     
@@ -15,7 +13,7 @@ function quotient($dividend, $divisor)
 function convert_to_base_helper($int, $new_base, $arr)
 {
     
-    if ($new_base <= 0 || !is_int($new_base)) {
+    if ($int < 0 || $new_base <= 0 || !is_int($int) || !is_int($new_base)) {
         throw new Exception("hey!");
     }
     
@@ -63,8 +61,6 @@ function convert_to_base_array($int, $new_base)
         $keys[] = $pair[0];
     }
     
-    
-    
     $max = 0;
     
     foreach ($keys as $key) {
@@ -72,8 +68,6 @@ function convert_to_base_array($int, $new_base)
             $max = $key;
         }
     }
-    
-    
         
     for ($i = 0; $i < $max; ++$i) {
         if (!in_array($i, $keys)) {
@@ -96,7 +90,7 @@ function convert_to_base_array($int, $new_base)
     return $final_arr;
 }
 
-//$int must be < 62
+//$int must be nonnegative and < 62
 function int_to_base_62($int)
 {
     

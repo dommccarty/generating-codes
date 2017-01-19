@@ -15,6 +15,11 @@ function code_algorithm()
 {
 
     $counter_filename = "codes_counter.txt"; //initialize it with "0"
+	
+	if (!file_exists($counter_filename)) {
+		
+		file_put_contents($counter_filename, "0");
+	}
 
     $fp = fopen($counter_filename, "r+");
 
